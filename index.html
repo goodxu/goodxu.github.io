@@ -169,6 +169,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="小白菜">
+      <meta itemprop="description" content="记录学习心得，生活感悟！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小白菜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">lambda表达式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-03 23:39:37 / Modified: 23:37:18" itemprop="dateCreated datePublished" datetime="2019-12-03T23:39:37+08:00">2019-12-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><ol>
+<li><p>简单介绍</p>
+<p>是jdk1.8新加语法（匿名函数），允许将函数作为方法参数传递，是jdk8的重要特性。使用lambda表达式可以替代匿名内部内，简化代码的书写。同时lambda表达式提升了对集合、框架的遍历、迭代、过滤。</p>
+</li>
+<li><p>lambda表达式的特点</p>
+<ul>
+<li><p>函数式编程</p>
+</li>
+<li><p>自动判断参数类型</p>
+</li>
+<li><p>代码简洁</p>
+</li>
+</ul>
+</li>
+<li><p>简单的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数式接口传统写法：(匿名内部类)</span></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"his"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"><span class="comment">//函数式接口lambda表达式：</span></span><br><span class="line"><span class="keyword">new</span> Thread(()-&gt;System.out.print(<span class="string">"lambda"</span>)).start();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>函数式接口</p>
+<p>有且只有一个抽象方法的接口，比如：Runnable接口。注解：@FunctionInterface</p>
+<p>常见函数式接口的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;    </span><br><span class="line">    <span class="comment">/*    使用jdk的函数式接口进行测试    </span></span><br><span class="line"><span class="comment">    @FunctionalInterface    </span></span><br><span class="line"><span class="comment">    public interface Callable&lt;V&gt; &#123;        </span></span><br><span class="line"><span class="comment">    V call() throws Exception;    </span></span><br><span class="line"><span class="comment">    &#125;    </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line">    <span class="comment">//匿名内部类    、</span></span><br><span class="line">    System.out.println(<span class="keyword">new</span> Callable&lt;String&gt;() &#123;        </span><br><span class="line">        <span class="meta">@Override</span>        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;            </span><br><span class="line">            <span class="keyword">return</span> <span class="string">"his"</span>;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;.call());    </span><br><span class="line">    <span class="comment">//lambda表达式    </span></span><br><span class="line">    <span class="comment">//(参数)-&gt;&#123;方法体&#125;    </span></span><br><span class="line">    Callable&lt;String&gt; call = ()-&gt;&#123;<span class="keyword">return</span> <span class="string">"lambda01"</span>;&#125;;                           </span><br><span class="line">    System.out.println(call.call());    </span><br><span class="line">    <span class="comment">//方法体可以直接写返回值    </span></span><br><span class="line">    Callable&lt;String&gt; call2 = ()-&gt;<span class="string">"lambda02"</span>;    </span><br><span class="line">    System.out.println(call2.call());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>执行结果</p>
+<p>his</p>
+<p>lambda01<br>lambda02</p>
+</blockquote>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/11/23/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -524,7 +621,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

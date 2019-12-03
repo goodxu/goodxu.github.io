@@ -46,17 +46,17 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="lambda表达式 简单介绍 是jdk1.8新加语法（匿名函数），允许将函数作为方法参数传递，是jdk8的重要特性。使用lambda表达式可以替代匿名内部内，简化代码的书写。同时lambda表达式提升了对集合、框架的遍历、迭代、过滤。  lambda表达式的特点  函数式编程  自动判断参数类型  代码简洁    简单的使用： 123456789&#x2F;&#x2F;函数式接口传统写法：(匿名内部类)new Thr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;11&#x2F;18&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="lambda表达式">
+<meta property="og:url" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;03&#x2F;lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="小白菜的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="lambda表达式 简单介绍 是jdk1.8新加语法（匿名函数），允许将函数作为方法参数传递，是jdk8的重要特性。使用lambda表达式可以替代匿名内部内，简化代码的书写。同时lambda表达式提升了对集合、框架的遍历、迭代、过滤。  lambda表达式的特点  函数式编程  自动判断参数类型  代码简洁    简单的使用： 123456789&#x2F;&#x2F;函数式接口传统写法：(匿名内部类)new Thr">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-18T14:37:27.174Z">
+<meta property="og:updated_time" content="2019-12-03T15:37:18.551Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://xupenghui.vip/2019/11/18/hello-world/">
+<link rel="canonical" href="http://xupenghui.vip/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -70,7 +70,7 @@
   };
 </script>
 
-  <title>Hello World | 小白菜的博客</title>
+  <title>lambda表达式 | 小白菜的博客</title>
   
 
 
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/11/18/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          lambda表达式
         </h1>
 
         <div class="post-meta">
@@ -192,8 +192,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-11-18 22:37:27" itemprop="dateCreated datePublished" datetime="2019-11-18T22:37:27+08:00">2019-11-18</time>
+              <time title="Created: 2019-12-03 23:39:37 / Modified: 23:37:18" itemprop="dateCreated datePublished" datetime="2019-12-03T23:39:37+08:00">2019-12-03</time>
             </span>
 
           
@@ -207,19 +208,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><ol>
+<li><p>简单介绍</p>
+<p>是jdk1.8新加语法（匿名函数），允许将函数作为方法参数传递，是jdk8的重要特性。使用lambda表达式可以替代匿名内部内，简化代码的书写。同时lambda表达式提升了对集合、框架的遍历、迭代、过滤。</p>
+</li>
+<li><p>lambda表达式的特点</p>
+<ul>
+<li><p>函数式编程</p>
+</li>
+<li><p>自动判断参数类型</p>
+</li>
+<li><p>代码简洁</p>
+</li>
+</ul>
+</li>
+<li><p>简单的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数式接口传统写法：(匿名内部类)</span></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"his"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"><span class="comment">//函数式接口lambda表达式：</span></span><br><span class="line"><span class="keyword">new</span> Thread(()-&gt;System.out.print(<span class="string">"lambda"</span>)).start();</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>函数式接口</p>
+<p>有且只有一个抽象方法的接口，比如：Runnable接口。注解：@FunctionInterface</p>
+<p>常见函数式接口的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;    </span><br><span class="line">    <span class="comment">/*    使用jdk的函数式接口进行测试    </span></span><br><span class="line"><span class="comment">    @FunctionalInterface    </span></span><br><span class="line"><span class="comment">    public interface Callable&lt;V&gt; &#123;        </span></span><br><span class="line"><span class="comment">    V call() throws Exception;    </span></span><br><span class="line"><span class="comment">    &#125;    </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line">    <span class="comment">//匿名内部类    、</span></span><br><span class="line">    System.out.println(<span class="keyword">new</span> Callable&lt;String&gt;() &#123;        </span><br><span class="line">        <span class="meta">@Override</span>        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;            </span><br><span class="line">            <span class="keyword">return</span> <span class="string">"his"</span>;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;.call());    </span><br><span class="line">    <span class="comment">//lambda表达式    </span></span><br><span class="line">    <span class="comment">//(参数)-&gt;&#123;方法体&#125;    </span></span><br><span class="line">    Callable&lt;String&gt; call = ()-&gt;&#123;<span class="keyword">return</span> <span class="string">"lambda01"</span>;&#125;;                           </span><br><span class="line">    System.out.println(call.call());    </span><br><span class="line">    <span class="comment">//方法体可以直接写返回值    </span></span><br><span class="line">    Callable&lt;String&gt; call2 = ()-&gt;<span class="string">"lambda02"</span>;    </span><br><span class="line">    System.out.println(call2.call());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<blockquote>
+<p>执行结果</p>
+<p>his</p>
+<p>lambda01<br>lambda02</p>
+</blockquote>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
 
     </div>
 
@@ -233,14 +260,14 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/23/jvm/" rel="next" title="jvm">
+                  <i class="fa fa-chevron-left"></i> jvm
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/23/jvm/" rel="prev" title="jvm">
-                  jvm <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -279,7 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lambda表达式"><span class="nav-number">1.</span> <span class="nav-text">lambda表达式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
