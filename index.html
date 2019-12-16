@@ -169,6 +169,444 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/16/jvm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="小白菜">
+      <meta itemprop="description" content="记录学习心得，生活感悟！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小白菜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/jvm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">jvm-基础知识</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-16 22:03:17" itemprop="dateCreated datePublished" datetime="2019-12-16T22:03:17+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-11 22:09:50" itemprop="dateModified" datetime="2019-12-11T22:09:50+08:00">2019-12-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="jvm-基础知识"><a href="#jvm-基础知识" class="headerlink" title="jvm-基础知识"></a>jvm-基础知识</h1><h2 id="java从编码到执行的过程"><a href="#java从编码到执行的过程" class="headerlink" title="java从编码到执行的过程"></a>java从编码到执行的过程</h2><img src="../image/jvm/javarun.png" alt="java执行过程" style="float:left" />
+
+
+
+<p><em>即时编译器：</em></p>
+<blockquote>
+<p>在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/wabiaozia/article/details/89414045" target="_blank" rel="noopener">java的编译器、解释器和即时编译器概念</a></p>
+<h2 id="jvm定义"><a href="#jvm定义" class="headerlink" title="jvm定义"></a>jvm定义</h2><blockquote>
+<p>JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。</p>
+</blockquote>
+<ul>
+<li><p>java是跨平台的语言</p>
+</li>
+<li><p>jvm是跨语言的平台</p>
+<img src="../image/jvm/jvmLoadclass.png" alt="jvm跨平台" style="zoom:75%;float:left" />
+
+<p>多种语言可以在jvm上执行，jvm是执行class文件的，所以只要可以编译成class文件，就可以在jvm上执行。比如scale语言就是在jvm上执行的。</p>
+</li>
+</ul>
+<p><strong>总结起来：</strong></p>
+<ul>
+<li><p><em>jvm是一种规范</em></p>
+</li>
+<li><p><em>jvm是虚构出来的一台计算机</em></p>
+<ul>
+<li><p><em>字节码指令集（java汇编）</em></p>
+</li>
+<li><p><em>内存管理（堆、栈、方法区等）</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="常见jvm的实现"><a href="#常见jvm的实现" class="headerlink" title="常见jvm的实现"></a>常见jvm的实现</h2><ul>
+<li><p>Hotspot<br>oracle官方</p>
+</li>
+<li><p>Jrockit<br>BEA产品，曾经号称是世界上最快的虚拟机，被oracle收购，与HotSpot合体。</p>
+</li>
+<li><p>J9<br>IBM的虚拟机</p>
+</li>
+<li><p>MicroSoft VM<br>微软的虚拟机</p>
+</li>
+<li><p>TaoBaoVM<br>淘宝的虚拟机，hotSpot的深度定制版</p>
+</li>
+<li><p>liquidVM<br>直接针对硬件的虚拟机</p>
+</li>
+<li><p>azul Zing<br>最新的垃圾回收业界标杆，号称1ms<br>土豪专用版本</p>
+</li>
+</ul>
+<h2 id="jdk、jre、jvm的关系"><a href="#jdk、jre、jvm的关系" class="headerlink" title="jdk、jre、jvm的关系"></a>jdk、jre、jvm的关系</h2><img src="../image/jvm/jdkjreandjvm.png" alt="jdk、jre、jvm的关系" style="zoom:75%;float:left" />
+
+<p>jdk包含jre +  编译器 + java开发工具等</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/16/jvm-class%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="小白菜">
+      <meta itemprop="description" content="记录学习心得，生活感悟！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小白菜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/jvm-class%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">jvm-class文件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-16 22:03:17" itemprop="dateCreated datePublished" datetime="2019-12-16T22:03:17+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-14 14:32:38" itemprop="dateModified" datetime="2019-12-14T14:32:38+08:00">2019-12-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="jvm-class文件格式"><a href="#jvm-class文件格式" class="headerlink" title="jvm-class文件格式"></a>jvm-class文件格式</h1><h2 id="class文件及相关介绍"><a href="#class文件及相关介绍" class="headerlink" title="class文件及相关介绍"></a>class文件及相关介绍</h2><ul>
+<li><p>class文件为二进制字节流，字节码(ByteCode)文件。</p>
+</li>
+<li><p>class文件数据类型：u1、u2、u4、u8、_info</p>
+<ul>
+<li><p>u1、u2、u4、u8称为无符号数（比如u1代表一个字节表示的数），_info（ 表：来源于 hotspot 中源码的写法）</p>
+<blockquote>
+<p>无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二进制位均表示数    值位，相当于数的绝对值。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>查看十六进制文件信息</p>
+<ul>
+<li>notpad++ （插件为HEX-Editor）</li>
+</ul>
+<ul>
+<li><p>sublime</p>
+</li>
+<li><p>idea(BinEd插件)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>观察ByteCode的方法</p>
+<ul>
+<li><p>javap 命令</p>
+</li>
+<li><p>jClassLib（idea插件）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="class文件的构成"><a href="#class文件的构成" class="headerlink" title="class文件的构成"></a>class文件的构成</h2><ul>
+<li><p>java文件</p>
+<img src="../image/jvm/javaTest.png" alt="javaTest" style="float:left" />
+</li>
+<li><p>class文件十六进制视图</p>
+<img src="../image/jvm/javaclass.png" alt="javaclass" style="float:left"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li>class文件内容</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">名称</th>
+<th align="center">数量</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">u4</td>
+<td align="center">magic</td>
+<td align="center">1</td>
+<td align="center">魔数</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">minor_version</td>
+<td align="center">1</td>
+<td align="center">小版本号</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">major_version</td>
+<td align="center">1</td>
+<td align="center">大版本号</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">constant_pool_count</td>
+<td align="center">1</td>
+<td align="center">常量池数量</td>
+</tr>
+<tr>
+<td align="center">cp_info</td>
+<td align="center">constant_pool</td>
+<td align="center">constant_pool_count-1</td>
+<td align="center">常量池内容</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">access_flags</td>
+<td align="center">1</td>
+<td align="center">访问标志</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">this_class</td>
+<td align="center">1</td>
+<td align="center">本类描述</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">super_class</td>
+<td align="center">1</td>
+<td align="center">父类描述</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces_count</td>
+<td align="center">1</td>
+<td align="center">接口数量</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces</td>
+<td align="center">interface_count</td>
+<td align="center">接口</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">fields_count</td>
+<td align="center">1</td>
+<td align="center">属性数量</td>
+</tr>
+<tr>
+<td align="center">field_info</td>
+<td align="center">fields</td>
+<td align="center">fields_count</td>
+<td align="center">属性</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">methods_count</td>
+<td align="center">1</td>
+<td align="center">方法数量</td>
+</tr>
+<tr>
+<td align="center">method_info</td>
+<td align="center">methods</td>
+<td align="center">methods_count</td>
+<td align="center">方法</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">attributes_count</td>
+<td align="center">1</td>
+<td align="center">附加属性数量</td>
+</tr>
+<tr>
+<td align="center">attribute_info</td>
+<td align="center">attributes</td>
+<td align="center">attributes_count</td>
+<td align="center">附加属性</td>
+</tr>
+</tbody></table>
+<p>class文件内容详情</p>
+<img src="../image/jvm/tytecode.png" alt="class类文件" style="zoom: 180%; float: left;" />
+
+
+
+<ul>
+<li>javap观察到的ByteCode文件内容</li>
+</ul>
+<img src="../image/jvm/javap.png" alt="javap" style="zoom:75%;float:left" />
+
+<ul>
+<li>idea插件jClassLib观察ByteCode文件内容：</li>
+</ul>
+<img src="../image/jvm/ideabytecode.png" alt="idea插件jClassLib" style="float:left" />
+
+
+
+<ul>
+<li><p>代码中的方法</p>
+<ul>
+<li>方法的具体实现在methods中的attributes中的code中，具体的实现需要查阅jvm文档，找到对应的指令，比如Object的构造方法实现如下：</li>
+</ul>
+<img src="../image/jvm/method.png" alt="idea插件jClassLib" style="float:left" />
+
+<ul>
+<li><p>指令的查询(查询jvm文档，比如查询alode_0指令)，指令的数字映射和解释</p>
+<img src="../image/jvm/alode_0.png" alt="idea插件jClassLib" style="float:left" />
+</li>
+</ul>
+</li>
+<li><p>long、double原子性拓展</p>
+<ul>
+<li>非原子性的原因：在32位的机器上，读写一个long 或者 double 需要读写两次（long 和 double 是八个字节，占内存64位），所以在读写操作之间如果如果插入了其他线程的读写操作，会出现数据不一致问题。</li>
+</ul>
+</li>
+</ul>
+<img src="../image/jvm/longDouble.png" alt="idea插件jClassLib" style="float:left" />
+
+<ol>
+<li><p>线程一写完头部 -&gt; 线程二写完头部 -&gt; 线程二写完尾部 -&gt; 线程一写完尾部 ： 头部是线程二写的内容，尾部为线程一写的内容，数据错乱。</p>
+</li>
+<li><p>线程一写完头部，线程三读取完毕，读取数据有误等等</p>
+<p>在64为机器，long和double是否为原子性，可能和jvm的具体实现是有关的。</p>
+<ul>
+<li><p>如何实现原子性</p>
+<p>使用volatail修饰long或者double，可以实现原子性（jls文档）</p>
+<blockquote>
+<p><strong>17.7 Non-Atomic Treatment of</strong> double <strong>and</strong> long</p>
+<p><strong>For the purposes of the Java programming language memory model, a single write</strong></p>
+<p><strong>to a non-volatile long or double value is treated as two separate writes: one to each</strong></p>
+<p><strong>32-bit half. This can result in a situation where a thread sees the first 32 bits of a</strong></p>
+<p><strong>64-bit value from one write, and the second 32 bits from another write.</strong></p>
+<p><strong>Writes and reads of volatile long and double values are always atomic.</strong></p>
+<p><strong>Writes to and reads of references are always atomic, regardless of whether they are</strong></p>
+<p><strong>implemented as 32-bit or 64-bit values.</strong></p>
+<p>Some implementations may find it convenient to divide a single write action on a 64-bit</p>
+<p>long or double value into two write actions on adjacent 32-bit values. For efficiency’s</p>
+<p>sake, this behavior is implementation-specific; an implementation of the Java Virtual</p>
+<p>Machine is free to perform writes to long and double values atomically or in two parts.</p>
+<p>Implementations of the Java Virtual Machine are encouraged to avoid splitting 64-bit values</p>
+<p>where possible. Programmers are encouraged to declare shared 64-bit values as volatile</p>
+<p>or synchronize their programs correctly to avoid possible complications.</p>
+</blockquote>
+</li>
+<li><p>volatile实现原子性的原理</p>
+<p>线程可见（cup层级使用MESI协议）</p>
+<p>防止指令重排</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,250 +684,6 @@
 <li></li>
 <li></li>
 <li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/11/23/jvm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="小白菜">
-      <meta itemprop="description" content="记录学习心得，生活感悟！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小白菜的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/23/jvm/" class="post-title-link" itemprop="url">jvm</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2019-11-23 17:21:30 / Modified: 18:26:01" itemprop="dateCreated datePublished" datetime="2019-11-23T17:21:30+08:00">2019-11-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="jvm"><a href="#jvm" class="headerlink" title="jvm"></a>jvm</h1><h2 id="1：jvm基础知识"><a href="#1：jvm基础知识" class="headerlink" title="1：jvm基础知识"></a>1：jvm基础知识</h2><p><strong>1. java从编码到执行的过程：</strong></p>
-<img src="..\image\jvm\javarun.png" alt="java执行过程" style="zoom:80%;" />
-
-
-
-<h4 id="即时编译器："><a href="#即时编译器：" class="headerlink" title="即时编译器："></a>即时编译器：</h4><blockquote>
-<p>在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/wabiaozia/article/details/89414045" target="_blank" rel="noopener">java的编译器、解释器和即时编译器概念</a></p>
-<p><strong>2. jvm定义：</strong></p>
-<blockquote>
-<p>JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。</p>
-</blockquote>
-<ul>
-<li><p>java是跨平台的语言</p>
-</li>
-<li><p>jvm是跨语言的平台</p>
-<img src="..\image\jvm\jvmLoadclass.png" alt="jvm跨平 台" style="zoom:75%;" />
-
-<p>多种语言可以在jvm上执行，jvm是执行class文件的，所以只要可以编译成class文件，就可以在jvm上执行。比如scale语言就是在jvm上执行的。</p>
-</li>
-</ul>
-<p><strong>总结起来：</strong></p>
-<ul>
-<li><p><em>jvm是一种规范（<a href="https://docs.oracle.com/javase/specs/index.html" target="_blank" rel="noopener">jvm规范文档</a>）</em></p>
-</li>
-<li><p><em>jvm是虚构出来的一台计算机</em></p>
-<p><em>-字节码指令集（java汇编）</em></p>
-<p><em>-内存管理（堆、栈、方法区等）</em></p>
-</li>
-</ul>
-<p><strong>3. 常见jvm的实现</strong></p>
-<ul>
-<li>Hotspot</li>
-</ul>
-<p>-oracle官方</p>
-<ul>
-<li><p>Jrockit<br>BEA产品，曾经号称是世界上最快的虚拟机，被oracle收购，与HotSpot合体。</p>
-</li>
-<li><p>J9<br>IBM的虚拟机</p>
-</li>
-<li><p>MicroSoft VM<br>微软的虚拟机</p>
-</li>
-<li><p>TaoBaoVM<br>淘宝的虚拟机，hotSpot的深度定制版</p>
-</li>
-<li><p>liquidVM<br>直接针对硬件的虚拟机</p>
-</li>
-<li><p>azul Zing<br>最新的垃圾回收业界标杆，号称1ms<br>土豪专用版本</p>
-</li>
-</ul>
-<p><strong>4. jdk、jre、jvm的关系</strong></p>
-<img src="..\image\jvm\jdkjreandjvm.png" alt="jdk、jre、jvm的关系" style="zoom:75%;" />
-
-<p>jdk包含jre +  编译器 + java开发工具等</p>
-<h2 id="2：class文件"><a href="#2：class文件" class="headerlink" title="2：class文件"></a>2：class文件</h2><p><strong>1.    class文件定义</strong></p>
-<p>  class文件为二进制字节流，字节码(ByteCode)文件</p>
-<ul>
-<li><p><strong>查看十六进制文件信息</strong></p>
-<p> -notpad++ （插件为HEX-Editor）</p>
-<p>-sublime</p>
-<p> -idea(BinEd插件)</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>观察ByteCode的方法</strong><br>-javap 命令<br>-jClassLib（idea插件）</p>
-<p>class文件数据类型包含：</p>
-</li>
-<li><p>无符号数（u1、u2、u4、u8  ： u1代表一个字节、u2代表两个字节等）</p>
-</li>
-</ul>
-<blockquote>
-<p>​    无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二进制位均表示数    值位，相当于数的绝对值。</p>
-</blockquote>
-<ul>
-<li>表（_info : 来源于 hotspot 中源码的写法）</li>
-</ul>
-<p><strong>2.    class文件的构成</strong></p>
-<p>javap观察到的ByteCode文件：</p>
-<img src="..\image\jvm\javap.png" alt="javap" style="zoom:75%;" />
-
-<p>idea插件jClassLib观察ByteCode文件：</p>
-<img src="..\image\jvm\ideabytecode.png" alt="idea插件jClassLib" style="zoom: 80%;" />
-
-<p><strong>class类文件格式：(引用马老师整理的图片)</strong></p>
-<img src="..\image\jvm\tytecode.png" alt="**class类文件" style="zoom: 150%; " />
-
-
-
-<h2 id="3：类加载-初始化"><a href="#3：类加载-初始化" class="headerlink" title="3：类加载-初始化"></a>3：类加载-初始化</h2><p><strong>1. 加载过程</strong></p>
-<ul>
-<li><p>Loading</p>
-</li>
-<li><p>Linking</p>
-<ul>
-<li>Verification</li>
-<li>Preparation</li>
-<li>Resolution</li>
-</ul>
-</li>
-<li><p>Initializing</p>
-</li>
-</ul>
-<p><strong>Loading</strong>    </p>
-<ul>
-<li>双亲委派，主要出于安全来考虑</li>
-</ul>
-<img src="../image/jvm/double.png" alt="双亲委派" style="zoom:80%;" />
-
-<p><strong>说明：</strong>  子加载器和父加载器是层级关系，和我们理解的子类父类继承关系是不同的。具体的实现是子加载器中存在属性 <strong>parent</strong> 指向它的父加载器 。</p>
-<p>加载过程：</p>
-<p><img src="../image/jvm/classLoad.png" alt="类加载过程"></p>
-<ul>
-<li><p>LazyLoading （惰性加载）五种情况</p>
-<p> – new getstatic putstatic invokestatic指令，访问final变量除外</p>
-<p> – java.lang.reflect对类进行反射调用时</p>
-<p> – 初始化子类的时候，父类首先初始化</p>
-<p> – 虚拟机启动时，被执行的主类必须初始化</p>
-<p> – 动态语言支持java.lang.invoke.MethodHandle解析的结果为REF_getstatic REF_putstatic REF_invokestatic             的方法句柄时，该类必须初始化</p>
-</li>
-</ul>
-<ul>
-<li><p>ClassLoader的源码</p>
-<p>findInCache -&gt; parent.loadClass -&gt; findClass()</p>
-<ol>
-<li><p>自定义类加载器</p>
-<ol>
-<li>extends ClassLoader</li>
-<li>overwrite findClass() -&gt; defineClass(byte[] -&gt; Class clazz)</li>
-</ol>
-</li>
-<li><p>自定义类加载器的简单应用   </p>
-<ol>
-<li>加密</li>
-<li><font color=red>第一节课遗留问题：parent是如何指定的，打破双亲委派，学生问题桌面图片</font><ol>
-<li>用super(parent)指定</li>
-<li>双亲委派的打破<ol>
-<li>如何打破：重写loadClass（）</li>
-<li>何时打破过？<ol>
-<li>JDK1.2之前，自定义ClassLoader都必须重写loadClass()</li>
-<li>ThreadContextClassLoader可以实现基础类调用实现类代码，通过thread.setContextClassLoader指定</li>
-<li>热启动，热部署<ol>
-<li>osgi tomcat 都有自己的模块指定classloader（可以加载同一类库的不同版本）</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>混合执行 编译执行 解释执行</p>
-<ol>
-<li>检测热点代码：-XX:CompileThreshold = 10000</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>Linking</strong> </p>
-<ol>
-<li>Verification<ol>
-<li>验证文件是否符合JVM规定</li>
-</ol>
-</li>
-<li>Preparation<ol>
-<li>静态成员变量赋默认值</li>
-</ol>
-</li>
-<li>Resolution<ol>
-<li>将类、方法、属性等符号引用解析为直接引用<br>常量池中的各种符号引用解析为指针、偏移量等内存地址的直接引用</li>
-</ol>
-</li>
-</ol>
-<p><strong>Initializing</strong></p>
-<ol>
-<li><p>调用类初始化代码 <clinit>，给静态成员变量赋初始值</p>
-</li>
-<li><p>小总结：</p>
-<ol>
-<li>load - 默认值 - 初始值</li>
-<li>new - 申请内存 - 默认值 - 初始值</li>
-</ol>
-</li>
 </ol>
 
       
@@ -621,7 +815,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

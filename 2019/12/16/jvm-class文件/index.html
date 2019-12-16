@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="小白菜的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="jvm-class文件格式class文件及相关介绍 class文件为二进制字节流，字节码(ByteCode)文件。  class文件数据类型：u1、u2、u4、u8、_info  u1、u2、u4、u8称为无符号数（比如u1代表一个字节表示的数），_info（ 表：来源于 hotspot 中源码的写法）  无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm-class文件">
+<meta property="og:url" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;jvm-class%E6%96%87%E4%BB%B6&#x2F;index.html">
+<meta property="og:site_name" content="小白菜的博客">
+<meta property="og:description" content="jvm-class文件格式class文件及相关介绍 class文件为二进制字节流，字节码(ByteCode)文件。  class文件数据类型：u1、u2、u4、u8、_info  u1、u2、u4、u8称为无符号数（比如u1代表一个字节表示的数），_info（ 表：来源于 hotspot 中源码的写法）  无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javaTest.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javaclass.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;tytecode.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javap.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;ideabytecode.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;method.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;alode_0.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;longDouble.png">
+<meta property="og:updated_time" content="2019-12-14T06:32:38.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javaTest.png">
+
+<link rel="canonical" href="http://xupenghui.vip/2019/12/16/jvm-class%E6%96%87%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>jvm-class文件 | 小白菜的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小白菜的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">求知若渴，虚心若愚</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xupenghui.vip/2019/12/16/jvm-class%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="小白菜">
+      <meta itemprop="description" content="记录学习心得，生活感悟！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小白菜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jvm-class文件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-16 22:03:17" itemprop="dateCreated datePublished" datetime="2019-12-16T22:03:17+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-14 14:32:38" itemprop="dateModified" datetime="2019-12-14T14:32:38+08:00">2019-12-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="jvm-class文件格式"><a href="#jvm-class文件格式" class="headerlink" title="jvm-class文件格式"></a>jvm-class文件格式</h1><h2 id="class文件及相关介绍"><a href="#class文件及相关介绍" class="headerlink" title="class文件及相关介绍"></a>class文件及相关介绍</h2><ul>
+<li><p>class文件为二进制字节流，字节码(ByteCode)文件。</p>
+</li>
+<li><p>class文件数据类型：u1、u2、u4、u8、_info</p>
+<ul>
+<li><p>u1、u2、u4、u8称为无符号数（比如u1代表一个字节表示的数），_info（ 表：来源于 hotspot 中源码的写法）</p>
+<blockquote>
+<p>无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二进制位均表示数    值位，相当于数的绝对值。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>查看十六进制文件信息</p>
+<ul>
+<li>notpad++ （插件为HEX-Editor）</li>
+</ul>
+<ul>
+<li><p>sublime</p>
+</li>
+<li><p>idea(BinEd插件)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>观察ByteCode的方法</p>
+<ul>
+<li><p>javap 命令</p>
+</li>
+<li><p>jClassLib（idea插件）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="class文件的构成"><a href="#class文件的构成" class="headerlink" title="class文件的构成"></a>class文件的构成</h2><ul>
+<li><p>java文件</p>
+<img src="../image/jvm/javaTest.png" alt="javaTest" style="float:left" />
+</li>
+<li><p>class文件十六进制视图</p>
+<img src="../image/jvm/javaclass.png" alt="javaclass" style="float:left"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li>class文件内容</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">名称</th>
+<th align="center">数量</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">u4</td>
+<td align="center">magic</td>
+<td align="center">1</td>
+<td align="center">魔数</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">minor_version</td>
+<td align="center">1</td>
+<td align="center">小版本号</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">major_version</td>
+<td align="center">1</td>
+<td align="center">大版本号</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">constant_pool_count</td>
+<td align="center">1</td>
+<td align="center">常量池数量</td>
+</tr>
+<tr>
+<td align="center">cp_info</td>
+<td align="center">constant_pool</td>
+<td align="center">constant_pool_count-1</td>
+<td align="center">常量池内容</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">access_flags</td>
+<td align="center">1</td>
+<td align="center">访问标志</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">this_class</td>
+<td align="center">1</td>
+<td align="center">本类描述</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">super_class</td>
+<td align="center">1</td>
+<td align="center">父类描述</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces_count</td>
+<td align="center">1</td>
+<td align="center">接口数量</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces</td>
+<td align="center">interface_count</td>
+<td align="center">接口</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">fields_count</td>
+<td align="center">1</td>
+<td align="center">属性数量</td>
+</tr>
+<tr>
+<td align="center">field_info</td>
+<td align="center">fields</td>
+<td align="center">fields_count</td>
+<td align="center">属性</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">methods_count</td>
+<td align="center">1</td>
+<td align="center">方法数量</td>
+</tr>
+<tr>
+<td align="center">method_info</td>
+<td align="center">methods</td>
+<td align="center">methods_count</td>
+<td align="center">方法</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">attributes_count</td>
+<td align="center">1</td>
+<td align="center">附加属性数量</td>
+</tr>
+<tr>
+<td align="center">attribute_info</td>
+<td align="center">attributes</td>
+<td align="center">attributes_count</td>
+<td align="center">附加属性</td>
+</tr>
+</tbody></table>
+<p>class文件内容详情</p>
+<img src="../image/jvm/tytecode.png" alt="class类文件" style="zoom: 180%; float: left;" />
+
+
+
+<ul>
+<li>javap观察到的ByteCode文件内容</li>
+</ul>
+<img src="../image/jvm/javap.png" alt="javap" style="zoom:75%;float:left" />
+
+<ul>
+<li>idea插件jClassLib观察ByteCode文件内容：</li>
+</ul>
+<img src="../image/jvm/ideabytecode.png" alt="idea插件jClassLib" style="float:left" />
+
+
+
+<ul>
+<li><p>代码中的方法</p>
+<ul>
+<li>方法的具体实现在methods中的attributes中的code中，具体的实现需要查阅jvm文档，找到对应的指令，比如Object的构造方法实现如下：</li>
+</ul>
+<img src="../image/jvm/method.png" alt="idea插件jClassLib" style="float:left" />
+
+<ul>
+<li><p>指令的查询(查询jvm文档，比如查询alode_0指令)，指令的数字映射和解释</p>
+<img src="../image/jvm/alode_0.png" alt="idea插件jClassLib" style="float:left" />
+</li>
+</ul>
+</li>
+<li><p>long、double原子性拓展</p>
+<ul>
+<li>非原子性的原因：在32位的机器上，读写一个long 或者 double 需要读写两次（long 和 double 是八个字节，占内存64位），所以在读写操作之间如果如果插入了其他线程的读写操作，会出现数据不一致问题。</li>
+</ul>
+</li>
+</ul>
+<img src="../image/jvm/longDouble.png" alt="idea插件jClassLib" style="float:left" />
+
+<ol>
+<li><p>线程一写完头部 -&gt; 线程二写完头部 -&gt; 线程二写完尾部 -&gt; 线程一写完尾部 ： 头部是线程二写的内容，尾部为线程一写的内容，数据错乱。</p>
+</li>
+<li><p>线程一写完头部，线程三读取完毕，读取数据有误等等</p>
+<p>在64为机器，long和double是否为原子性，可能和jvm的具体实现是有关的。</p>
+<ul>
+<li><p>如何实现原子性</p>
+<p>使用volatail修饰long或者double，可以实现原子性（jls文档）</p>
+<blockquote>
+<p><strong>17.7 Non-Atomic Treatment of</strong> double <strong>and</strong> long</p>
+<p><strong>For the purposes of the Java programming language memory model, a single write</strong></p>
+<p><strong>to a non-volatile long or double value is treated as two separate writes: one to each</strong></p>
+<p><strong>32-bit half. This can result in a situation where a thread sees the first 32 bits of a</strong></p>
+<p><strong>64-bit value from one write, and the second 32 bits from another write.</strong></p>
+<p><strong>Writes and reads of volatile long and double values are always atomic.</strong></p>
+<p><strong>Writes to and reads of references are always atomic, regardless of whether they are</strong></p>
+<p><strong>implemented as 32-bit or 64-bit values.</strong></p>
+<p>Some implementations may find it convenient to divide a single write action on a 64-bit</p>
+<p>long or double value into two write actions on adjacent 32-bit values. For efficiency’s</p>
+<p>sake, this behavior is implementation-specific; an implementation of the Java Virtual</p>
+<p>Machine is free to perform writes to long and double values atomically or in two parts.</p>
+<p>Implementations of the Java Virtual Machine are encouraged to avoid splitting 64-bit values</p>
+<p>where possible. Programmers are encouraged to declare shared 64-bit values as volatile</p>
+<p>or synchronize their programs correctly to avoid possible complications.</p>
+</blockquote>
+</li>
+<li><p>volatile实现原子性的原理</p>
+<p>线程可见（cup层级使用MESI协议）</p>
+<p>防止指令重排</p>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/03/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="lambda表达式">
+                  <i class="fa fa-chevron-left"></i> lambda表达式
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/16/jvm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="jvm-基础知识">
+                  jvm-基础知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jvm-class文件格式"><span class="nav-number">1.</span> <span class="nav-text">jvm-class文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#class文件及相关介绍"><span class="nav-number">1.1.</span> <span class="nav-text">class文件及相关介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class文件的构成"><span class="nav-number">1.2.</span> <span class="nav-text">class文件的构成</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">小白菜</p>
+  <div class="site-description" itemprop="description">记录学习心得，生活感悟！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小白菜</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
