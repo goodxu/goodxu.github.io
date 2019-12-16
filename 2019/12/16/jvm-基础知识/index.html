@@ -46,17 +46,17 @@
   };
 </script>
 
-  <meta name="description" content="jvm-基础知识java从编码到执行的过程    即时编译器：  在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。  java的编译器、解释器和即时编译器概念 jvm定义 JVM是Java Virtual Machine（Java虚拟机）的缩写">
+  <meta name="description" content="jvm-基础知识java从编码到执行的过程      即时编译器：  在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。  java的编译器、解释器和即时编译器概念 jvm定义 JVM是Java Virtual Machine（Java虚拟机）的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm-基础知识">
 <meta property="og:url" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;jvm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86&#x2F;index.html">
 <meta property="og:site_name" content="小白菜的博客">
-<meta property="og:description" content="jvm-基础知识java从编码到执行的过程    即时编译器：  在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。  java的编译器、解释器和即时编译器概念 jvm定义 JVM是Java Virtual Machine（Java虚拟机）的缩写">
+<meta property="og:description" content="jvm-基础知识java从编码到执行的过程      即时编译器：  在Java编程语言和环境中，即时编译器（JIT compiler，just-in-time compiler）是一个把Java的字节码（包括需要被解释的指令的程序）转换成可以直接发送给处理器的指令的程序。  java的编译器、解释器和即时编译器概念 jvm定义 JVM是Java Virtual Machine（Java虚拟机）的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javarun.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;jvmLoadclass.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;jdkjreandjvm.png">
-<meta property="og:updated_time" content="2019-12-11T14:09:50.481Z">
+<meta property="og:updated_time" content="2019-12-16T14:11:47.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;xupenghui.vip&#x2F;2019&#x2F;12&#x2F;16&#x2F;image&#x2F;jvm&#x2F;javarun.png">
 
@@ -196,16 +196,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-16 22:03:17" itemprop="dateCreated datePublished" datetime="2019-12-16T22:03:17+08:00">2019-12-16</time>
+              <time title="Created: 2019-12-16 22:03:17 / Modified: 22:11:47" itemprop="dateCreated datePublished" datetime="2019-12-16T22:03:17+08:00">2019-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-11 22:09:50" itemprop="dateModified" datetime="2019-12-11T22:09:50+08:00">2019-12-11</time>
-              </span>
 
           
 
@@ -219,6 +213,8 @@
 
       
         <h1 id="jvm-基础知识"><a href="#jvm-基础知识" class="headerlink" title="jvm-基础知识"></a>jvm-基础知识</h1><h2 id="java从编码到执行的过程"><a href="#java从编码到执行的过程" class="headerlink" title="java从编码到执行的过程"></a>java从编码到执行的过程</h2><img src="../image/jvm/javarun.png" alt="java执行过程" style="float:left" />
+
+
 
 
 
@@ -236,9 +232,11 @@
 <li><p>jvm是跨语言的平台</p>
 <img src="../image/jvm/jvmLoadclass.png" alt="jvm跨平台" style="zoom:75%;float:left" />
 
-<p>多种语言可以在jvm上执行，jvm是执行class文件的，所以只要可以编译成class文件，就可以在jvm上执行。比如scale语言就是在jvm上执行的。</p>
+
+
 </li>
 </ul>
+<p>  多种语言可以在jvm上执行，jvm是执行class文件的，所以只要可以编译成class文件，就可以在jvm上执行。比如scale语言就是在jvm上执行的。</p>
 <p><strong>总结起来：</strong></p>
 <ul>
 <li><p><em>jvm是一种规范</em></p>
@@ -269,6 +267,8 @@
 </li>
 </ul>
 <h2 id="jdk、jre、jvm的关系"><a href="#jdk、jre、jvm的关系" class="headerlink" title="jdk、jre、jvm的关系"></a>jdk、jre、jvm的关系</h2><img src="../image/jvm/jdkjreandjvm.png" alt="jdk、jre、jvm的关系" style="zoom:75%;float:left" />
+
+
 
 <p>jdk包含jre +  编译器 + java开发工具等</p>
 
